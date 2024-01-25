@@ -42,8 +42,14 @@ public class Runigram {
 		// creates from the 3 colors a new Color object, and 
 		// makes pixel (i,j) refer to that object.
 		//// Replace the following statement with your code.
-		return null;
+		for (int i = 0; i < numCols; i++){
+			for (int j = 0; j < numRows; j++){
+				image[i][j] = new Color(in.readInt(),in.readInt(),in.readInt()) ;
+			}
+		}
+		return image;
 	}
+
 
     // Prints the RGB values of a given color.
 	private static void print(Color c) {
@@ -60,7 +66,14 @@ public class Runigram {
 	// For example, to check that some image processing function works correctly,
 	// we can apply the function and then use this function to print the resulting image.
 	private static void print(Color[][] image) {
-		//// Replace this comment with your code
+		int rows = image.length;
+		int cols = image[0].length;
+		for (int i = 0; i < rows; i++){
+			for (int j = 0; j < cols; j++){
+				print(image[i][j]);
+			}
+			System.out.println();
+		}
 	}
 	
 	/**
