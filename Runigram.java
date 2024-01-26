@@ -10,17 +10,21 @@ public class Runigram {
 		//// Hide / change / add to the testing code below, as needed.
 		
 		// Tests the reading and printing of an image:	
-		Color[][] tinypic = read("tinypic.ppm");
-		print(tinypic);
+		// Color[][] tinypic = read("tinypic.ppm");
+		// print(tinypic);
+
+		//thor.ppm
+		Color[][] thor = read("thor.ppm");
+		print(thor);
 
 		// Creates an image which will be the result of various 
 		// image processing operations:
 		Color[][] imageOut;
 
-		// Tests the horizontal flipping of an image:
-		// imageOut = flippedHorizontally(tinypic);
-		// System.out.println();
-		// print(imageOut);
+		//Tests the horizontal flipping of an image:
+		imageOut = flippedHorizontally(thor);
+		System.out.println();
+		print(imageOut);
 
 		// Tests the Vertical flipping of an image:
 		// imageOut = flippedVertically(tinypic);
@@ -28,7 +32,7 @@ public class Runigram {
 		// print(imageOut);
 
 		// Tests the greyScaled of an image:
-		imageOut = grayScaled(tinypic);
+		imageOut = grayScaled(thor);
 		System.out.println();
 		print(imageOut);
 		
@@ -52,8 +56,8 @@ public class Runigram {
 		// creates from the 3 colors a new Color object, and 
 		// makes pixel (i,j) refer to that object.
 		//// Replace the following statement with your code.
-		for (int i = 0; i < numCols; i++){
-			for (int j = 0; j < numRows; j++){
+		for (int i = 0; i < numRows; i++){
+			for (int j = 0; j < numCols; j++){
 				image[i][j] = new Color(in.readInt(),in.readInt(),in.readInt()) ;
 			}
 		}
@@ -147,8 +151,15 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		//// Replace the following statement with your code
-		return null;
+		Color[][] scaled  = new Color[height][width];
+		int rows = scaled.length;
+		int cols = scaled[0].length;
+		for (int i = 0; i < rows; i++){
+			for (int j = 0; j < cols; j++){
+				scaled[i][j] = image[(i * image.length) / height][(j * image[0].length) / width] ;
+			}
+		}
+		return scaled;
 	}
 	
 	/**
