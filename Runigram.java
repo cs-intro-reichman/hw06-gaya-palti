@@ -23,7 +23,12 @@ public class Runigram {
 		// print(imageOut);
 
 		// Tests the Vertical flipping of an image:
-		imageOut = flippedVertically(tinypic);
+		// imageOut = flippedVertically(tinypic);
+		// System.out.println();
+		// print(imageOut);
+
+		// Tests the greyScaled of an image:
+		imageOut = grayScaled(tinypic);
 		System.out.println();
 		print(imageOut);
 		
@@ -114,17 +119,27 @@ public class Runigram {
 	// Computes the luminance of the RGB values of the given pixel, using the formula 
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
 	// the three values r = lum, g = lum, b = lum.
-	public static Color luminance(Color pixel) {
-		//// Replace the following statement with your code
-		return null;
+    public static Color luminance(Color pixel) {
+		int luminanceValue = (int) (0.299 * pixel.getRed() + 0.587 * pixel.getGreen() + 0.114 * pixel.getBlue());
+		// Ensure luminance value is within the valid range [0, 255]
+		luminanceValue = Math.min(255, Math.max(0, luminanceValue));
+		Color lum = new Color(luminanceValue, luminanceValue, luminanceValue);
+		return lum;
 	}
 	
 	/**
 	 * Returns an image which is the grayscaled version of the given image.
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+		Color[][] grayScaled  = new Color[image.length][image[0].length];
+		int rows = grayScaled.length;
+		int cols = grayScaled[0].length;
+		for (int i = 0; i < rows; i++){
+			for (int j = 0; j < cols; j++){
+				grayScaled[i][j] = luminance(image[i][j]) ;
+			}
+		}
+		return grayScaled;
 	}	
 	
 	/**
